@@ -70,3 +70,4 @@ let g:ycm_filetype_whitelist = {
 	\ 'h'	: 1
 	\}
 "END YouCompleteMe
+
