@@ -60,3 +60,13 @@ let g:ctrlp_custom_ignore = {
 	\ 'file': '\.aux$\|\.bbl$\|\.blg$\|\.log$\|\.out$\|\.synctex.gz$\|\.tdo$\|\.toc$\|\.nav$\|\.snm$\|\.fuse_hidden\|\.pdf$\|\.fls$\|\.dvi$' 
 	\ }
 "END ctrlp
+
+"BEGIN YouCompleteMe
+let g:ycm_filetype_whitelist = {
+	\ 'c' : 1,
+	\ 'py' : 1,
+	\ 'cc' : 1,
+	\ 'cpp' : 1,
+	\ 'h'	: 1
+	\}
+"END YouCompleteMe
