@@ -41,6 +41,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'wikitopian/hardmode'
 Plug 'Valloric/YouCompleteMe' "Install manually
 Plug 'vivkin/vim-call-cmake'
+Plug 'ajh17/VimCompletesMe'
 
 call plug#end()
 
@@ -48,6 +49,10 @@ call plug#end()
 let g:vimtex_view_method = 'zathura'
 let g:vimtex_quickfix_open_on_warning = 0
 let g:bgrtex_quickfix_autojump = 1
+if !exists('g:ycm_semantic_triggers')
+	let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 "END vimtex
 
 "BEGIN hardmode
@@ -67,7 +72,18 @@ let g:ycm_filetype_whitelist = {
 	\ 'py' : 1,
 	\ 'cc' : 1,
 	\ 'cpp' : 1,
-	\ 'h'	: 1
+	\ 'h'	: 1,
+	\ 'tex' : 1
 	\}
+"let g:ycm_min_num_of_chars_for_completion = 10
+let g:ycm_auto_trigger = 0
+let g:ycm_autoclose_preview_window_after_completion = 1
 "END YouCompleteMe
+
+"augroup VimCompletesMeTex
+"autocmd!
+"autocmd FileType tex
+"	\ let b:vcm_omni_pattern = g:vimtex#re#neocomplete
+"augroup END
+
 
