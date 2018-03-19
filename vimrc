@@ -1,6 +1,7 @@
 colorscheme onehalflight-benjamin
 
 set exrc "allows local .vimrc in directory
+set clipboard=unnamedplus "paste from/to clipboard
 
 "BEGIN view
 set number "line numbers
@@ -41,7 +42,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'wikitopian/hardmode'
 Plug 'Valloric/YouCompleteMe' "Install manually
 Plug 'vivkin/vim-call-cmake'
-Plug 'ajh17/VimCompletesMe'
+Plug 'vim-syntastic/syntastic'
 
 call plug#end()
 
@@ -80,10 +81,14 @@ let g:ycm_auto_trigger = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
 "END YouCompleteMe
 
-"augroup VimCompletesMeTex
-"autocmd!
-"autocmd FileType tex
-"	\ let b:vcm_omni_pattern = g:vimtex#re#neocomplete
-"augroup END
+"BEGIN Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_tex_checkers = []
+"END Syntastic
