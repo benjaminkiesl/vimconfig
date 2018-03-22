@@ -10,6 +10,8 @@ set scrolloff=3
 set showcmd
 set tabstop=4
 set shiftwidth=4
+set whichwrap+=>,l
+set whichwrap+=<,h
 "END view
 
 "BEGIN search settings
@@ -48,6 +50,7 @@ call plug#end()
 
 "BEGIN vimtex
 let g:vimtex_view_method = 'zathura'
+let g:vimtex_quickfix_autojump = 0
 let g:vimtex_quickfix_open_on_warning = 0
 let g:bgrtex_quickfix_autojump = 1
 if !exists('g:ycm_semantic_triggers')
