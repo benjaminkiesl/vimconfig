@@ -64,9 +64,10 @@ nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
 "END hardmode
 
 "BEGIN ctrlp
+	"\ 'file': '\.aux$\|\.bbl$\|\.blg$\|\.log$\|\.out$\|\.synctex.gz$\|\.tdo$\|\.toc$\|\.nav$\|\.snm$\|\.fuse_hidden\|\.pdf$\|\.fls$\|\.dvi$' 
 let g:ctrlp_custom_ignore = {
-	\ 'dir': '\.git$',
-	\ 'file': '\.aux$\|\.bbl$\|\.blg$\|\.log$\|\.out$\|\.synctex.gz$\|\.tdo$\|\.toc$\|\.nav$\|\.snm$\|\.fuse_hidden\|\.pdf$\|\.fls$\|\.dvi$' 
+	\ 'dir': '\.git$\|build',
+    \ 'file': '\v(\.cpp|\.cc|\.c|\.h|\.hh|\.cxx|\.tex|\.bib|\.txt)@<!$'
 	\ }
 "END ctrlp
 
@@ -77,7 +78,8 @@ let g:ycm_filetype_whitelist = {
 	\ 'cc' : 1,
 	\ 'cpp' : 1,
 	\ 'h'	: 1,
-	\ 'tex' : 1
+	\ 'tex' : 1,
+	\ 'txt' : 1
 	\}
 "let g:ycm_min_num_of_chars_for_completion = 10
 let g:ycm_auto_trigger = 0
