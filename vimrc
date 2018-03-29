@@ -36,7 +36,7 @@ set formatoptions-=t
 
 "BEGIN comment/uncomment C++
 map <C-c> :s/^/\/\//<Enter>
-map <C-x> :s/^\/\///<Enter>
+map <C-x> :s/^\/\///<Enter> 
 "END comment/uncomment C++
 
 "BEGIN path
@@ -109,4 +109,9 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_tex_checkers = []
+let g:syntastic_c_include_dirs = [ '../include', 'include' ]
 "END Syntastic
+
+"BEGIN Deactivate auto indentation
+filetype indent off
+"END Deactivate auto indentation
