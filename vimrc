@@ -12,6 +12,10 @@ set tabstop=4
 set shiftwidth=4
 set whichwrap+=>,l
 set whichwrap+=<,h
+autocmd FileType cpp,c,cxx,h,hpp setlocal cc=80
+autocmd FileType cpp,c,cxx,h,hpp setlocal shiftwidth=2
+autocmd FileType cpp,c,cxx,h,hpp setlocal tabstop=2
+autocmd FileType cpp,c,cxx,h,hpp setlocal expandtab
 "END view
 
 "BEGIN search settings
@@ -29,6 +33,11 @@ set textwidth=0
 set wrapmargin=0
 set formatoptions-=t
 "END word wrapping
+
+"BEGIN comment/uncomment C++
+map <C-c> :s/^/\/\//<Enter>
+map <C-x> :s/^\/\///<Enter>
+"END comment/uncomment C++
 
 "BEGIN path
 let &path.="/usr/include/c++/5,/usr/include/x86_64-linux-gnu/c++/5,/usr/include/c++/5/backward,/usr/lib/gcc/x86_64-linux-gnu/5/include,/usr/local/include,/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed,/usr/include/x86_64-linux-gnu,/usr/include,"
