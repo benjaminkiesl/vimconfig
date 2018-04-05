@@ -2,6 +2,7 @@ colorscheme onehalflight-benjamin
 
 set exrc "allows local .vimrc in directory
 set clipboard=unnamedplus "paste from/to clipboard
+"set autoread "automatically reload files after they have changed outside
 
 "BEGIN view
 set number "line numbers
@@ -74,6 +75,7 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 
 "BEGIN hardmode
 nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
+"autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
 "END hardmode
 
 "BEGIN ctrlp
@@ -109,9 +111,10 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_tex_checkers = []
+let g:syntastic_cpp_include_dirs = [ '../include', 'include' ]
 let g:syntastic_c_include_dirs = [ '../include', 'include' ]
 "END Syntastic
 
 "BEGIN Deactivate auto indentation
-filetype indent off
+"filetype indent off
 "END Deactivate auto indentation
