@@ -35,10 +35,17 @@ set wrapmargin=0
 set formatoptions-=t
 "END word wrapping
 
-"BEGIN comment/uncomment C++
-map <C-c> :s/^/\/\//<Enter>
-map <C-x> :s/^\/\///<Enter> 
-"END comment/uncomment C++
+"BEGIN comment/uncomment
+autocmd FileType cpp,c,cxx,h,hpp,java map <C-c> :s/^/\/\//<Enter>
+autocmd FileType cpp,c,cxx,h,hpp,java map <C-x> :s/^\/\///<Enter> 
+autocmd FileType tex map <C-c> :s/^/%/<Enter>
+autocmd FileType tex map <C-x> :s/^%//<Enter> 
+"END comment/uncomment
+
+"BEGIN add spaces after commas and semicolons
+"map <C-s> :%s/\([,;]\)\(\S\)/\1 \2/g<Enter>
+map <C-a> :%!~/.vim/astyle-google --style=linux --indent=spaces=2<Enter>
+"END add spaces after commas
 
 "BEGIN path
 let &path.="/usr/include/c++/5,/usr/include/x86_64-linux-gnu/c++/5,/usr/include/c++/5/backward,/usr/lib/gcc/x86_64-linux-gnu/5/include,/usr/local/include,/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed,/usr/include/x86_64-linux-gnu,/usr/include,"
@@ -51,7 +58,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'lervag/vimtex'
 Plug 'mkitt/tabline.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'wikitopian/hardmode'
+Plug 'kbarrette/mediummode'
 Plug 'Valloric/YouCompleteMe' "Install manually
 Plug 'vivkin/vim-call-cmake'
 Plug 'vim-syntastic/syntastic'
@@ -72,11 +79,6 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 "let g:ycm_enable_diagnostic_signs = 0
 "let g:ycm_enable_diagnostic_highlighting = 0
 "END vimtex
-
-"BEGIN hardmode
-nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
-"autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
-"END hardmode
 
 "BEGIN ctrlp
 	"\ 'file': '\.aux$\|\.bbl$\|\.blg$\|\.log$\|\.out$\|\.synctex.gz$\|\.tdo$\|\.toc$\|\.nav$\|\.snm$\|\.fuse_hidden\|\.pdf$\|\.fls$\|\.dvi$' 
@@ -114,6 +116,10 @@ let g:syntastic_tex_checkers = []
 let g:syntastic_cpp_include_dirs = [ '../include', 'include' ]
 let g:syntastic_c_include_dirs = [ '../include', 'include' ]
 "END Syntastic
+
+"BEGIN medium mode
+let g:mediummode_enabled = 0
+"END medium mode
 
 "BEGIN Deactivate auto indentation
 "filetype indent off

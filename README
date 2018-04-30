@@ -1,1 +1,5 @@
-This is my Vim conig.
+This is my Vim config.
+
+To make synctex work, add the following line to ~/.bashrc:
+
+alias vim='vim --servername VIM'
