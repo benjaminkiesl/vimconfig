@@ -2,10 +2,10 @@ colorscheme onehalflight-benjamin
 
 set exrc "allows local .vimrc in directory
 set clipboard=unnamedplus "paste from/to clipboard
-"set autoread "automatically reload files after they have changed outside
 
 "BEGIN view
-set number "line numbers
+set statusline=[%n]\ %t
+set guifont=Monospace\ 11
 set number relativenumber
 set scrolloff=3
 set showcmd
@@ -42,10 +42,9 @@ autocmd FileType tex map <C-c> :s/^/%/<Enter>
 autocmd FileType tex map <C-x> :s/^%//<Enter> 
 "END comment/uncomment
 
-"BEGIN add spaces after commas and semicolons
-"map <C-s> :%s/\([,;]\)\(\S\)/\1 \2/g<Enter>
+"BEGIN astyle
 map <C-a> :%!~/.vim/astyle-google --style=linux --indent=spaces=2<Enter>
-"END add spaces after commas
+"END astyle
 
 "BEGIN path
 let &path.="/usr/include/c++/5,/usr/include/x86_64-linux-gnu/c++/5,/usr/include/c++/5/backward,/usr/lib/gcc/x86_64-linux-gnu/5/include,/usr/local/include,/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed,/usr/include/x86_64-linux-gnu,/usr/include,"
@@ -53,15 +52,14 @@ let &path.="/usr/include/c++/5,/usr/include/x86_64-linux-gnu/c++/5,/usr/include/
 
 call plug#begin('~/.vim/plugged')
 
-
 Plug 'kien/ctrlp.vim'
-Plug 'lervag/vimtex'
 Plug 'mkitt/tabline.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'kbarrette/mediummode'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'Valloric/YouCompleteMe' "Install manually
-Plug 'vivkin/vim-call-cmake'
 Plug 'vim-syntastic/syntastic'
+Plug 'vivkin/vim-call-cmake'
+Plug 'lervag/vimtex'
+Plug 'takac/vim-hardtime'
 
 call plug#end()
 
@@ -75,13 +73,9 @@ if !exists('g:ycm_semantic_triggers')
 endif
 let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-"let g:ycm_show_diagnostics_ui = 1
-"let g:ycm_enable_diagnostic_signs = 0
-"let g:ycm_enable_diagnostic_highlighting = 0
 "END vimtex
 
 "BEGIN ctrlp
-	"\ 'file': '\.aux$\|\.bbl$\|\.blg$\|\.log$\|\.out$\|\.synctex.gz$\|\.tdo$\|\.toc$\|\.nav$\|\.snm$\|\.fuse_hidden\|\.pdf$\|\.fls$\|\.dvi$' 
 let g:ctrlp_custom_ignore = {
 	\ 'dir': '\.git$\|build',
     \ 'file': '\v(\.cpp|\.cc|\.c|\.h|\.hh|\.cxx|\.tex|\.bib|\.txt)@<!$'
@@ -98,7 +92,6 @@ let g:ycm_filetype_whitelist = {
 	\ 'tex' : 1,
 	\ 'txt' : 1
 	\}
-"let g:ycm_min_num_of_chars_for_completion = 10
 let g:ycm_auto_trigger = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
 "END YouCompleteMe
@@ -117,10 +110,6 @@ let g:syntastic_cpp_include_dirs = [ '../include', 'include' ]
 let g:syntastic_c_include_dirs = [ '../include', 'include' ]
 "END Syntastic
 
-"BEGIN medium mode
-let g:mediummode_enabled = 0
-"END medium mode
-
-"BEGIN Deactivate auto indentation
-"filetype indent off
-"END Deactivate auto indentation
+"BEGIN HardTime
+let g:hardtime_default_on = 1
+"END HardTime
