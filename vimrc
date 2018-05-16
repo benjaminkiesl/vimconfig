@@ -22,7 +22,6 @@ autocmd FileType cpp,c,cxx,h,hpp setlocal expandtab
 
 "BEGIN line numbers
 set number relativenumber
-"autocmd!
 autocmd BufEnter,FocusGained,InsertLeave,WinEnter,CmdwinEnter * if &nu | set rnu   | endif
 autocmd BufLeave,FocusLost,InsertEnter,WinLeave,CmdwinLeave   * if &nu | set nornu | endif
 "END line numbers
@@ -62,7 +61,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'kien/ctrlp.vim'
 Plug 'mkitt/tabline.vim'
-"Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'Valloric/YouCompleteMe' "Install manually
 Plug 'vim-syntastic/syntastic'
 Plug 'vivkin/vim-call-cmake'
