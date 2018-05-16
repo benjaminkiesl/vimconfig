@@ -3,3 +3,5 @@ This is my Vim config.
 To make synctex work, add the following line to ~/.bashrc:
 
 alias vim='vim --servername VIM'
+
+To make YouCompleteMe work, part of the installation has to be done manually (see YouCompleteMe documentation)

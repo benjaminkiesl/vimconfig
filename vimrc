@@ -2,11 +2,12 @@ colorscheme onehalflight-benjamin
 
 set exrc "allows local .vimrc in directory
 set clipboard=unnamedplus "paste from/to clipboard
+set formatoptions-=r "do not insert comment leader in new lines
+set formatoptions-=o "do not insert comment leader in new lines
 
 "BEGIN view
 set statusline=[%n]\ %t
 set guifont=Monospace\ 11
-set number relativenumber
 set scrolloff=3
 set showcmd
 set tabstop=4
@@ -18,6 +19,13 @@ autocmd FileType cpp,c,cxx,h,hpp setlocal shiftwidth=2
 autocmd FileType cpp,c,cxx,h,hpp setlocal tabstop=2
 autocmd FileType cpp,c,cxx,h,hpp setlocal expandtab
 "END view
+
+"BEGIN line numbers
+set number relativenumber
+"autocmd!
+autocmd BufEnter,FocusGained,InsertLeave,WinEnter,CmdwinEnter * if &nu | set rnu   | endif
+autocmd BufLeave,FocusLost,InsertEnter,WinLeave,CmdwinLeave   * if &nu | set nornu | endif
+"END line numbers
 
 "BEGIN search settings
 set incsearch
@@ -54,7 +62,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'kien/ctrlp.vim'
 Plug 'mkitt/tabline.vim'
-Plug 'jeffkreeftmeijer/vim-numbertoggle'
+"Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'Valloric/YouCompleteMe' "Install manually
 Plug 'vim-syntastic/syntastic'
 Plug 'vivkin/vim-call-cmake'
