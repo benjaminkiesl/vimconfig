@@ -1,7 +1,25 @@
-This is my Vim config.
+//////////////////////////////////////////////////////////////////////
 
-To make synctex work, add the following line to ~/.bashrc:
+This is my vim config. 
+
+//////////////////////////////////////////////////////////////////////
+
+All the files in this repository are supposed
+to end up in the directory "~/.vim/".
+
+The file "~/.vimrc" should then only contain the following line:
+
+runtime vimrc 
+
+//////////////////////////////////////////////////////////////////////
+
+To make SyncTex work, add the following line to the file "~/.bashrc":
 
 alias vim='vim --servername VIM'
 
-To make YouCompleteMe work, part of the installation has to be done manually (see YouCompleteMe documentation)
+//////////////////////////////////////////////////////////////////////
+
+To make YouCompleteMe work, part of the installation has to 
+be done manually (see YouCompleteMe documentation).
+
+//////////////////////////////////////////////////////////////////////
