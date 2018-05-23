@@ -117,5 +117,5 @@ let g:syntastic_c_include_dirs = [ '../include', 'include' ]
 "END Syntastic
 
 "BEGIN HardTime
-let g:hardtime_default_on = 1
+"let g:hardtime_default_on = 1
 "END HardTime
