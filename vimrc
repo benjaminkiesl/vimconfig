@@ -5,6 +5,7 @@ set clipboard=unnamedplus "paste from/to clipboard
 set formatoptions-=r "do not insert comment leader in new lines
 set formatoptions-=o "do not insert comment leader in new lines
 
+
 "BEGIN view
 set statusline=[%n]\ %t
 set guifont=Monospace\ 11
@@ -41,6 +42,12 @@ set textwidth=0
 set wrapmargin=0
 set formatoptions-=t
 "END word wrapping
+
+"BEGIN save with ctrl-s
+noremap <silent> <C-S> :w<CR>
+inoremap <silent> <C-S> <C-O>:w<CR>
+vnoremap <silent> <C-S> <Esc>:w<CR>gv
+"END save with ctrl-s
 
 "BEGIN comment/uncomment
 autocmd FileType cpp,c,cxx,h,hpp,java map <C-c> :s/^/\/\//<Enter>
