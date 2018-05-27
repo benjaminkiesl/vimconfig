@@ -19,6 +19,10 @@ autocmd FileType cpp,c,cxx,h,hpp setlocal cc=80
 autocmd FileType cpp,c,cxx,h,hpp setlocal shiftwidth=2
 autocmd FileType cpp,c,cxx,h,hpp setlocal tabstop=2
 autocmd FileType cpp,c,cxx,h,hpp setlocal expandtab
+noremap <C-H> gT
+noremap <C-L> gt
+nnoremap <silent> <C-J> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
+nnoremap <silent> <C-K> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
 "END view
 
 "BEGIN line numbers
