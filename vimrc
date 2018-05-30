@@ -2,9 +2,7 @@ colorscheme onehalflight-benjamin
 
 set exrc "allows local .vimrc in directory
 set clipboard=unnamedplus "paste from/to clipboard
-set formatoptions-=r "do not insert comment leader in new lines
-set formatoptions-=o "do not insert comment leader in new lines
-
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o "no comments in new lines
 
 "BEGIN view
 set statusline=[%n]\ %t
