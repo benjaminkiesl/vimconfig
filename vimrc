@@ -5,6 +5,9 @@ set clipboard=unnamedplus "paste from/to clipboard
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o "no comments in new lines
 
 "BEGIN view
+if has("gui_running")
+  set lines=80 columns=102
+endif
 set statusline=[%n]\ %t
 set guifont=Monospace\ 11
 set scrolloff=3
@@ -75,6 +78,8 @@ Plug 'vim-syntastic/syntastic'
 Plug 'vivkin/vim-call-cmake'
 Plug 'lervag/vimtex'
 Plug 'takac/vim-hardtime'
+Plug 'easymotion/vim-easymotion'
+Plug 'joequery/Stupid-EasyMotion'
 
 call plug#end()
 
@@ -108,6 +113,7 @@ let g:ycm_filetype_whitelist = {
 	\ 'txt' : 1
 	\}
 let g:ycm_auto_trigger = 0
+set completeopt-=preview
 let g:ycm_autoclose_preview_window_after_completion = 1
 "END YouCompleteMe
 
@@ -124,6 +130,13 @@ let g:syntastic_tex_checkers = []
 let g:syntastic_cpp_include_dirs = [ '../include', 'include' ]
 let g:syntastic_c_include_dirs = [ '../include', 'include' ]
 "END Syntastic
+
+"BEGIN EasyMotion/Stupid-EasyMotion
+map <Space> <Plug>(easymotion-s)
+"map , <Plug>(easymotion-prefix)
+map , <Leader><Leader>w
+let g:EasyMotion_smartcase = 1
+"END EasyMotion/Stupid-EasyMotion
 
 "BEGIN HardTime
 "let g:hardtime_default_on = 1
