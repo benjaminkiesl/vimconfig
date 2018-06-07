@@ -20,11 +20,21 @@ autocmd FileType cpp,c,cxx,h,hpp setlocal cc=80
 autocmd FileType cpp,c,cxx,h,hpp setlocal shiftwidth=2
 autocmd FileType cpp,c,cxx,h,hpp setlocal tabstop=2
 autocmd FileType cpp,c,cxx,h,hpp setlocal expandtab
-noremap <C-H> gT
-noremap <C-L> gt
-nnoremap <silent> <C-J> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
-nnoremap <silent> <C-K> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
 "END view
+
+"BEGIN move efficiently between tabs
+"noremap <C-H> gT
+"noremap <C-L> gt
+"nnoremap <silent> <C-J> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
+"nnoremap <silent> <C-K> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
+"END move efficiently between tabs
+
+"BEGIN move efficiently between buffers
+:nnoremap <C-k> :bnext<CR>;
+:nnoremap <C-j> :bprevious<CR>;
+:nnoremap <C-l> :ls<CR>
+:nnoremap <C-h> :buffer<Space>
+"END move efficiently between buffers
 
 "BEGIN line numbers
 set number relativenumber
@@ -54,13 +64,6 @@ inoremap <silent> <C-S> <C-O>:w<CR>
 vnoremap <silent> <C-S> <Esc>:w<CR>gv
 "END save with ctrl-s
 
-"BEGIN comment/uncomment
-autocmd FileType cpp,c,cxx,h,hpp,java map <C-c> :s/^/\/\//<Enter>
-autocmd FileType cpp,c,cxx,h,hpp,java map <C-x> :s/^\/\///<Enter> 
-autocmd FileType tex map <C-c> :s/^/%/<Enter>
-autocmd FileType tex map <C-x> :s/^%//<Enter> 
-"END comment/uncomment
-
 "BEGIN astyle
 map <C-a> :%!~/.vim/astyle-google --style=linux --indent=spaces=2<Enter>
 "END astyle
@@ -80,6 +83,7 @@ Plug 'lervag/vimtex'
 Plug 'takac/vim-hardtime'
 Plug 'easymotion/vim-easymotion'
 Plug 'joequery/Stupid-EasyMotion'
+Plug 'scrooloose/nerdcommenter'
 
 call plug#end()
 
@@ -133,11 +137,13 @@ let g:syntastic_c_include_dirs = [ '../include', 'include' ]
 
 "BEGIN EasyMotion/Stupid-EasyMotion
 map <Space> <Plug>(easymotion-s)
-"map , <Plug>(easymotion-prefix)
 map , <Leader><Leader>w
 let g:EasyMotion_smartcase = 1
 "END EasyMotion/Stupid-EasyMotion
 
-"BEGIN HardTime
-"let g:hardtime_default_on = 1
-"END HardTime
+"BEGIN NERD Commenter
+map <C-c> <Plug>NERDCommenterComment
+map <C-x> <Plug>NERDCommenterUncomment
+let g:NERDDefaultAlign = 'left'
+let g:NERDCommentEmptyLines = 1
+"END NERD Commenter
