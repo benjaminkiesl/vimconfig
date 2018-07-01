@@ -1,53 +1,34 @@
+"BEGIN basics
 colorscheme onehalflight-benjamin
-
 set exrc "allows local .vimrc in directory
-set clipboard=unnamedplus "paste from/to clipboard
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o "no comments in new lines
-
-"BEGIN view
 if has("gui_running")
   set lines=80 columns=102
 endif
 set statusline=[%n]\ %t
 set guifont=Monospace\ 11
+set clipboard=unnamedplus
 set scrolloff=3
 set showcmd
+set whichwrap+=<,>,h,l,[,]
+filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
-set whichwrap+=>,l
-set whichwrap+=<,h
-autocmd FileType cpp,c,cxx,h,hpp setlocal cc=80
-autocmd FileType cpp,c,cxx,h,hpp setlocal shiftwidth=2
-autocmd FileType cpp,c,cxx,h,hpp setlocal tabstop=2
-autocmd FileType cpp,c,cxx,h,hpp setlocal expandtab
-"END view
+set formatoptions-=c
+set formatoptions-=r
+set formatoptions-=o
+"END basics
 
-"BEGIN move efficiently between tabs
-"noremap <C-H> gT
-"noremap <C-L> gt
-"nnoremap <silent> <C-J> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
-"nnoremap <silent> <C-K> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
-"END move efficiently between tabs
-
-"BEGIN move efficiently between buffers
-:nnoremap <C-k> :bnext<CR>;
-:nnoremap <C-j> :bprevious<CR>;
-:nnoremap <C-l> :ls<CR>
-:nnoremap <C-h> :buffer<Space>
-"END move efficiently between buffers
+"BEGIN save with ctrl-s
+noremap <silent> <C-S> :w<CR>
+inoremap <silent> <C-S> <C-O>:w<CR>
+vnoremap <silent> <C-S> <Esc>:w<CR>gv
+"END save with ctrl-s
 
 "BEGIN line numbers
 set number relativenumber
 autocmd BufEnter,FocusGained,InsertLeave,WinEnter,CmdwinEnter * if &nu | set rnu   | endif
 autocmd BufLeave,FocusLost,InsertEnter,WinLeave,CmdwinLeave   * if &nu | set nornu | endif
 "END line numbers
-
-"BEGIN search settings
-set incsearch
-set ignorecase
-set smartcase
-highlight IncSearch ctermbg=green 
-"END search settings
 
 "BEGIN word wrapping
 set wrap
@@ -58,11 +39,35 @@ set wrapmargin=0
 set formatoptions-=t
 "END word wrapping
 
-"BEGIN save with ctrl-s
-noremap <silent> <C-S> :w<CR>
-inoremap <silent> <C-S> <C-O>:w<CR>
-vnoremap <silent> <C-S> <Esc>:w<CR>gv
-"END save with ctrl-s
+"BEGIN search settings
+set incsearch
+set ignorecase
+set smartcase
+highlight IncSearch ctermbg=green 
+"END search settings
+
+"BEGIN move efficiently between buffers
+nnoremap <C-k> :bnext<CR>;
+nnoremap <C-j> :bprevious<CR>;
+nnoremap <C-l> :ls<CR>
+nnoremap <C-h> :buffer<Space>
+"END move efficiently between buffers
+
+"BEGIN insert multiple lines before switching to insert mode (default is 3)
+function! OpenLines(nrlines, dir)
+  let nrlines = a:nrlines < 3 ? 3 : a:nrlines
+  let start = line('.') + a:dir
+  call append(start, repeat([''], nrlines))
+  if a:dir < 0
+    normal! 2k
+  else
+    normal! 2j
+  endif
+endfunction
+" Mappings to open multiple lines and enter insert mode.
+nnoremap <Leader>o :<C-u>call OpenLines(v:count, 0)<CR>S
+nnoremap <Leader>O :<C-u>call OpenLines(v:count, -1)<CR>S
+"END insert multiple lines
 
 "BEGIN astyle
 map <C-a> :%!~/.vim/astyle-google --style=linux --indent=spaces=2<Enter>
@@ -74,6 +79,9 @@ let &path.="/usr/include/c++/5,/usr/include/x86_64-linux-gnu/c++/5,/usr/include/
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'easymotion/vim-easymotion'
+Plug 'joequery/Stupid-EasyMotion'
+Plug 'scrooloose/nerdcommenter'
 Plug 'kien/ctrlp.vim'
 Plug 'mkitt/tabline.vim'
 Plug 'Valloric/YouCompleteMe' "Install manually
@@ -81,11 +89,21 @@ Plug 'vim-syntastic/syntastic'
 Plug 'vivkin/vim-call-cmake'
 Plug 'lervag/vimtex'
 Plug 'takac/vim-hardtime'
-Plug 'easymotion/vim-easymotion'
-Plug 'joequery/Stupid-EasyMotion'
-Plug 'scrooloose/nerdcommenter'
 
 call plug#end()
+
+"BEGIN EasyMotion/Stupid-EasyMotion
+map <Space> <Plug>(easymotion-s)
+map , <Leader><Leader>w
+let g:EasyMotion_smartcase = 1
+"END EasyMotion/Stupid-EasyMotion
+
+"BEGIN NERD Commenter
+map <C-c> <Plug>NERDCommenterComment
+map <C-x> <Plug>NERDCommenterUncomment
+let g:NERDDefaultAlign = 'left'
+let g:NERDCommentEmptyLines = -2
+"END NERD Commenter
 
 "BEGIN vimtex
 let g:vimtex_view_method = 'zathura'
@@ -93,7 +111,7 @@ let g:vimtex_quickfix_autojump = 0
 let g:vimtex_quickfix_open_on_warning = 0
 let g:bgrtex_quickfix_autojump = 1
 if !exists('g:ycm_semantic_triggers')
-	let g:ycm_semantic_triggers = {}
+    let g:ycm_semantic_triggers = {}
 endif
 let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
@@ -101,21 +119,21 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 
 "BEGIN ctrlp
 let g:ctrlp_custom_ignore = {
-	\ 'dir': '\.git$\|build',
-    \ 'file': '\v(\.cpp|\.cc|\.c|\.h|\.hh|\.cxx|\.tex|\.bib|\.txt)@<!$'
-	\ }
+    \ 'dir': '\.git$\|build',
+    \ 'file': '\v(\.cpp|\.cc|\.c|\.h|\.hh|\.cxx|\.tex|\.bib|\.txt|\.tsv)@<!$'
+    \ }
 "END ctrlp
 
 "BEGIN YouCompleteMe
 let g:ycm_filetype_whitelist = {
-	\ 'c' : 1,
-	\ 'py' : 1,
-	\ 'cc' : 1,
-	\ 'cpp' : 1,
-	\ 'h'	: 1,
-	\ 'tex' : 1,
-	\ 'txt' : 1
-	\}
+    \ 'c' : 1,
+    \ 'py' : 1,
+    \ 'cc' : 1,
+    \ 'cpp' : 1,
+    \ 'h'	: 1,
+    \ 'tex' : 1,
+    \ 'txt' : 1
+    \}
 let g:ycm_auto_trigger = 0
 set completeopt-=preview
 let g:ycm_autoclose_preview_window_after_completion = 1
@@ -134,16 +152,3 @@ let g:syntastic_tex_checkers = []
 let g:syntastic_cpp_include_dirs = [ '../include', 'include' ]
 let g:syntastic_c_include_dirs = [ '../include', 'include' ]
 "END Syntastic
-
-"BEGIN EasyMotion/Stupid-EasyMotion
-map <Space> <Plug>(easymotion-s)
-map , <Leader><Leader>w
-let g:EasyMotion_smartcase = 1
-"END EasyMotion/Stupid-EasyMotion
-
-"BEGIN NERD Commenter
-map <C-c> <Plug>NERDCommenterComment
-map <C-x> <Plug>NERDCommenterUncomment
-let g:NERDDefaultAlign = 'left'
-let g:NERDCommentEmptyLines = 1
-"END NERD Commenter
