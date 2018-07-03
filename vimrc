@@ -13,9 +13,7 @@ set whichwrap+=<,>,h,l,[,]
 filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
-set formatoptions-=c
-set formatoptions-=r
-set formatoptions-=o
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 "END basics
 
 "BEGIN save with ctrl-s
@@ -110,11 +108,6 @@ let g:vimtex_view_method = 'zathura'
 let g:vimtex_quickfix_autojump = 0
 let g:vimtex_quickfix_open_on_warning = 0
 let g:bgrtex_quickfix_autojump = 1
-if !exists('g:ycm_semantic_triggers')
-    let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 "END vimtex
 
 "BEGIN ctrlp
@@ -125,15 +118,11 @@ let g:ctrlp_custom_ignore = {
 "END ctrlp
 
 "BEGIN YouCompleteMe
-let g:ycm_filetype_whitelist = {
-    \ 'c' : 1,
-    \ 'py' : 1,
-    \ 'cc' : 1,
-    \ 'cpp' : 1,
-    \ 'h'	: 1,
-    \ 'tex' : 1,
-    \ 'txt' : 1
-    \}
+if !exists('g:ycm_semantic_triggers')
+    let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_auto_trigger = 0
 set completeopt-=preview
 let g:ycm_autoclose_preview_window_after_completion = 1
