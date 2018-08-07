@@ -95,6 +95,7 @@ Plug 'vim-syntastic/syntastic'
 Plug 'vivkin/vim-call-cmake'
 Plug 'lervag/vimtex'
 Plug 'takac/vim-hardtime'
+Plug 'milkypostman/vim-togglelist'
 
 call plug#end()
 
