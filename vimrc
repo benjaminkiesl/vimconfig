@@ -135,6 +135,7 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_auto_trigger = 0
 set completeopt-=preview
 let g:ycm_autoclose_preview_window_after_completion = 1
+nnoremap <Leader>g :YcmCompleter GoTo<CR>
 "END YouCompleteMe
 
 "BEGIN Syntastic
