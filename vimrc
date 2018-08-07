@@ -51,6 +51,14 @@ nnoremap <C-l> :ls<CR>
 nnoremap <C-h> :buffer<Space>
 "END move efficiently between buffers
 
+"BEGIN automatically open quickfix windoer after grep
+augroup myvimrc
+    autocmd!
+    autocmd QuickFixCmdPost [^l]* cwindow
+    autocmd QuickFixCmdPost l*    lwindow
+augroup END
+"END
+
 "BEGIN insert multiple lines before switching to insert mode (default is 3)
 function! OpenLines(nrlines, dir)
   let nrlines = a:nrlines < 3 ? 3 : a:nrlines
@@ -113,7 +121,7 @@ let g:bgrtex_quickfix_autojump = 1
 "BEGIN ctrlp
 let g:ctrlp_custom_ignore = {
     \ 'dir': '\.git$\|build',
-    \ 'file': '\v(\.cpp|\.cc|\.c|\.h|\.hh|\.cxx|\.tex|\.bib|\.txt|\.tsv)@<!$'
+    \ 'file': '\v(\.cpp|\.cc|\.c|\.h|\.hpp|\.hh|\.cxx|\.tex|\.bib|\.txt|\.tsv)@<!$'
     \ }
 "END ctrlp
 
