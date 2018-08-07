@@ -136,6 +136,8 @@ let g:ycm_auto_trigger = 0
 set completeopt-=preview
 let g:ycm_autoclose_preview_window_after_completion = 1
 nnoremap <Leader>g :YcmCompleter GoTo<CR>
+nnoremap <Leader>f :YcmCompleter GoToDefinition<CR>
+nnoremap <Leader>c :YcmCompleter GoToDeclaration<CR>
 "END YouCompleteMe
 
 "BEGIN Syntastic
