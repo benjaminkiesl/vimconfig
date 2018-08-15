@@ -51,7 +51,7 @@ nnoremap <C-l> :ls<CR>
 nnoremap <C-h> :buffer<Space>
 "END move efficiently between buffers
 
-"BEGIN automatically open quickfix windoer after grep
+"BEGIN automatically open quickfix window after grep
 augroup myvimrc
     autocmd!
     autocmd QuickFixCmdPost [^l]* cwindow
