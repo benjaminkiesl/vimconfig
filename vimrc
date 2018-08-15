@@ -57,7 +57,7 @@ augroup myvimrc
     autocmd QuickFixCmdPost [^l]* cwindow
     autocmd QuickFixCmdPost l*    lwindow
 augroup END
-"END
+"END automatically open quickfix window after grep
 
 "BEGIN insert multiple lines before switching to insert mode (default is 3)
 function! OpenLines(nrlines, dir)
