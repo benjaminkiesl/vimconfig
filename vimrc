@@ -13,6 +13,7 @@ set whichwrap+=<,>,h,l,[,]
 filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
+let g:tex_comment_nospell=1 "deactivate spell checking in TeX comments
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 "END basics
 
