@@ -60,22 +60,6 @@ augroup myvimrc
 augroup END
 "END automatically open quickfix window after grep
 
-"BEGIN insert multiple lines before switching to insert mode (default is 3)
-function! OpenLines(nrlines, dir)
-  let nrlines = a:nrlines < 3 ? 3 : a:nrlines
-  let start = line('.') + a:dir
-  call append(start, repeat([''], nrlines))
-  if a:dir < 0
-    normal! 2k
-  else
-    normal! 2j
-  endif
-endfunction
-" Mappings to open multiple lines and enter insert mode.
-nnoremap <Leader>o :<C-u>call OpenLines(v:count, 0)<CR>S
-nnoremap <Leader>O :<C-u>call OpenLines(v:count, -1)<CR>S
-"END insert multiple lines
-
 "BEGIN astyle
 map <C-a> :%!~/.vim/astyle-google --style=linux --indent=spaces=2<Enter>
 "END astyle
@@ -93,7 +77,6 @@ Plug 'kien/ctrlp.vim'
 Plug 'mkitt/tabline.vim'
 Plug 'Valloric/YouCompleteMe' "Install manually
 Plug 'vim-syntastic/syntastic'
-Plug 'vivkin/vim-call-cmake'
 Plug 'lervag/vimtex'
 Plug 'takac/vim-hardtime'
 Plug 'milkypostman/vim-togglelist'
