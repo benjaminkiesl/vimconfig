@@ -97,7 +97,10 @@ let g:NERDCommentEmptyLines = -2
 "END NERD Commenter
 
 "BEGIN vimtex
-let g:vimtex_view_method = 'zathura'
+let g:vimtex_view_method = 'general'
+let g:vimtex_view_general_viewer = 'okular'
+let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+let g:vimtex_view_general_options_latexmk = '--unique'
 let g:vimtex_quickfix_autojump = 0
 let g:vimtex_quickfix_open_on_warning = 0
 let g:bgrtex_quickfix_autojump = 1
