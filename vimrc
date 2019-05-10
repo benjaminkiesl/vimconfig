@@ -10,11 +10,11 @@ set clipboard=unnamedplus
 set scrolloff=3
 set showcmd
 set whichwrap+=<,>,h,l,[,]
-filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
 let g:tex_comment_nospell=1 "deactivate spell checking in TeX comments
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+filetype plugin indent on
 "END basics
 
 "BEGIN save with ctrl-s
@@ -101,6 +101,7 @@ let g:vimtex_view_method = 'general'
 let g:vimtex_view_general_viewer = 'okular'
 let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 let g:vimtex_view_general_options_latexmk = '--unique'
+let g:vimtex_view_forward_search_on_start = 0
 let g:vimtex_quickfix_autojump = 0
 let g:vimtex_quickfix_open_on_warning = 0
 let g:bgrtex_quickfix_autojump = 1
@@ -109,13 +110,13 @@ let g:bgrtex_quickfix_autojump = 1
 "BEGIN ctrlp
 let g:ctrlp_custom_ignore = {
     \ 'dir': '\.git$\|build',
-    \ 'file': '\v(\.cpp|\.cc|\.c|\.h|\.hpp|\.hh|\.cxx|\.tex|\.bib|\.txt|\.tsv)@<!$'
+    \ 'file': '\v(\.cpp|\.cc|\.c|\.h|\.hpp|\.hh|\.cxx|\.tex|\.bib|\.txt|\.spthy|\.m4|\.rc)@<!$'
     \ }
 "END ctrlp
 
 "BEGIN YouCompleteMe
 if !exists('g:ycm_semantic_triggers')
-    let g:ycm_semantic_triggers = {}
+	let g:ycm_semantic_triggers = {}
 endif
 let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'

@@ -209,4 +209,9 @@ endif
 
 let b:spell_options="contained"
 
+setlocal cc=80
+setlocal expandtab
+setlocal shiftwidth=4
+setlocal tabstop=4
+
 " vim: ts=8

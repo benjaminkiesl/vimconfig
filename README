@@ -19,6 +19,8 @@ To make SyncTex work, add the following line to the file "~/.bashrc":
 
 alias vim='vim --servername VIM'
 
+If you are using Okular as the PDF viewer, then in Okular you need to go to "Settings > Configure Okular > Editor" and there you have to choose "Custom Text Editor" as editor and then enter the following text under "Command": "gvim --remote-silent %f -c %l"
+
 //////////////////////////////////////////////////////////////////////
 
 To make YouCompleteMe work, part of the installation has to be done manually.
