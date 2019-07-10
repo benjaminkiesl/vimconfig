@@ -110,7 +110,7 @@ let g:bgrtex_quickfix_autojump = 1
 "BEGIN ctrlp
 let g:ctrlp_custom_ignore = {
     \ 'dir': '\.git$\|build',
-    \ 'file': '\v(\.cpp|\.cc|\.c|\.h|\.hpp|\.hh|\.cxx|\.tex|\.bib|\.txt|\.spthy|\.m4|\.rc)@<!$'
+    \ 'file': '\v(\.cpp|\.cc|\.c|\.h|\.hpp|\.hh|\.cxx|\.tex|\.bib|\.txt|\.spthy|\.m4|\.rc|\.gpp)@<!$'
     \ }
 "END ctrlp
 
