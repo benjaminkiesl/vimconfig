@@ -123,6 +123,7 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 let g:ycm_auto_trigger = 0
 set completeopt-=preview
 let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_show_diagnostics_ui = 0
 nnoremap <Leader>g :YcmCompleter GoTo<CR>
 nnoremap <Leader>f :YcmCompleter GoToDefinition<CR>
 nnoremap <Leader>c :YcmCompleter GoToDeclaration<CR>
@@ -140,4 +141,6 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_tex_checkers = []
 let g:syntastic_cpp_include_dirs = [ '../include', 'include' ]
 let g:syntastic_c_include_dirs = [ '../include', 'include' ]
+let g:syntastic_cpp_checkers = ['gcc']
+let g:syntastic_aggregate_erros = 1
 "END Syntastic
