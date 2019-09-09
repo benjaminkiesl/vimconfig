@@ -38,3 +38,7 @@ has been called) can then be symlinked to the root of the project.
 Further details are explained in the YouCompleteMe documentation.
 
 //////////////////////////////////////////////////////////////////////
+
+If you want syntastic to check the syntax of python files, install flake8:
+
+sudo apt install flake8

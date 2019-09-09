@@ -142,5 +142,6 @@ let g:syntastic_tex_checkers = []
 let g:syntastic_cpp_include_dirs = [ '../include', 'include' ]
 let g:syntastic_c_include_dirs = [ '../include', 'include' ]
 let g:syntastic_cpp_checkers = ['gcc']
+let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_aggregate_erros = 1
 "END Syntastic
