@@ -91,17 +91,6 @@ let g:NERDDefaultAlign = 'left'
 let g:NERDCommentEmptyLines = -2
 "END NERD Commenter
 
-"BEGIN vimtex
-let g:vimtex_view_method = 'general'
-let g:vimtex_view_general_viewer = 'okular'
-let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
-let g:vimtex_view_general_options_latexmk = '--unique'
-let g:vimtex_view_forward_search_on_start = 0
-let g:vimtex_quickfix_autojump = 0
-let g:vimtex_quickfix_open_on_warning = 0
-let g:bgrtex_quickfix_autojump = 1
-"END vimtex
-
 "BEGIN ctrlp
 let g:ctrlp_custom_ignore = {
     \ 'dir': '\.git$\|build',
@@ -128,7 +117,6 @@ nnoremap <Leader>c :YcmCompleter GoToDeclaration<CR>
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
@@ -140,3 +128,14 @@ let g:syntastic_cpp_checkers = ['gcc']
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_aggregate_erros = 1
 "END Syntastic
+
+"BEGIN vimtex
+let g:vimtex_view_method = 'general'
+let g:vimtex_view_general_viewer = 'okular'
+let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+let g:vimtex_view_general_options_latexmk = '--unique'
+let g:vimtex_view_forward_search_on_start = 0
+let g:vimtex_quickfix_autojump = 0
+let g:vimtex_quickfix_open_on_warning = 0
+let g:bgrtex_quickfix_autojump = 1
+"END vimtex
