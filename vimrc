@@ -79,11 +79,10 @@ Plug 'lervag/vimtex'
 
 call plug#end()
 
-"BEGIN EasyMotion/Stupid-EasyMotion
+"BEGIN EasyMotion
 map <Space> <Plug>(easymotion-s)
-map , <Leader><Leader>w
 let g:EasyMotion_smartcase = 1
-"END EasyMotion/Stupid-EasyMotion
+"END EasyMotion
 
 "BEGIN NERD Commenter
 map <C-c> <Plug>NERDCommenterComment
