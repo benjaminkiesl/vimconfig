@@ -71,15 +71,11 @@ let &path.="/usr/include/c++/5,/usr/include/x86_64-linux-gnu/c++/5,/usr/include/
 call plug#begin('~/.vim/plugged')
 
 Plug 'easymotion/vim-easymotion'
-Plug 'joequery/Stupid-EasyMotion'
 Plug 'scrooloose/nerdcommenter'
 Plug 'kien/ctrlp.vim'
-Plug 'mkitt/tabline.vim'
 Plug 'Valloric/YouCompleteMe' "Install manually
 Plug 'vim-syntastic/syntastic'
 Plug 'lervag/vimtex'
-Plug 'takac/vim-hardtime'
-Plug 'milkypostman/vim-togglelist'
 
 call plug#end()
 
