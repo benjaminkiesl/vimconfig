@@ -71,23 +71,18 @@ let &path.="/usr/include/c++/5,/usr/include/x86_64-linux-gnu/c++/5,/usr/include/
 call plug#begin('~/.vim/plugged')
 
 Plug 'easymotion/vim-easymotion'
-Plug 'joequery/Stupid-EasyMotion'
 Plug 'scrooloose/nerdcommenter'
 Plug 'kien/ctrlp.vim'
-Plug 'mkitt/tabline.vim'
 Plug 'Valloric/YouCompleteMe' "Install manually
 Plug 'vim-syntastic/syntastic'
 Plug 'lervag/vimtex'
-Plug 'takac/vim-hardtime'
-Plug 'milkypostman/vim-togglelist'
 
 call plug#end()
 
-"BEGIN EasyMotion/Stupid-EasyMotion
+"BEGIN EasyMotion
 map <Space> <Plug>(easymotion-s)
-map , <Leader><Leader>w
 let g:EasyMotion_smartcase = 1
-"END EasyMotion/Stupid-EasyMotion
+"END EasyMotion
 
 "BEGIN NERD Commenter
 map <C-c> <Plug>NERDCommenterComment
@@ -95,17 +90,6 @@ map <C-x> <Plug>NERDCommenterUncomment
 let g:NERDDefaultAlign = 'left'
 let g:NERDCommentEmptyLines = -2
 "END NERD Commenter
-
-"BEGIN vimtex
-let g:vimtex_view_method = 'general'
-let g:vimtex_view_general_viewer = 'okular'
-let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
-let g:vimtex_view_general_options_latexmk = '--unique'
-let g:vimtex_view_forward_search_on_start = 0
-let g:vimtex_quickfix_autojump = 0
-let g:vimtex_quickfix_open_on_warning = 0
-let g:bgrtex_quickfix_autojump = 1
-"END vimtex
 
 "BEGIN ctrlp
 let g:ctrlp_custom_ignore = {
@@ -133,7 +117,6 @@ nnoremap <Leader>c :YcmCompleter GoToDeclaration<CR>
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
@@ -145,3 +128,14 @@ let g:syntastic_cpp_checkers = ['gcc']
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_aggregate_erros = 1
 "END Syntastic
+
+"BEGIN vimtex
+let g:vimtex_view_method = 'general'
+let g:vimtex_view_general_viewer = 'okular'
+let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+let g:vimtex_view_general_options_latexmk = '--unique'
+let g:vimtex_view_forward_search_on_start = 0
+let g:vimtex_quickfix_autojump = 0
+let g:vimtex_quickfix_open_on_warning = 0
+let g:bgrtex_quickfix_autojump = 1
+"END vimtex
