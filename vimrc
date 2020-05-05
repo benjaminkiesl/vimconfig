@@ -94,7 +94,7 @@ let g:NERDCommentEmptyLines = -2
 "BEGIN ctrlp
 let g:ctrlp_custom_ignore = {
     \ 'dir': '\.git$\|build',
-    \ 'file': '\v(\.cpp|\.cc|\.c|\.h|\.hpp|\.hh|\.cxx|\.tex|\.bib|\.txt|\.spthy|\.m4|\.m4i|\.rc|\.gpp|\.sh|\.xml|\.html|\.py|\.json|\.hs|\.md)@<!$'
+    \ 'file': '\v(\.cpp|\.cc|\.c|\.h|\.hpp|\.hh|\.cxx|\.tex|\.bib|\.txt|\.spthy|\.m4|\.m4i|\.rc|\.gpp|\.sh|\.xml|\.html|\.css|\.py|\.json|\.hs|\.md)@<!$'
     \ }
 "END ctrlp
 
