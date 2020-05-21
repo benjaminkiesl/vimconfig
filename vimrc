@@ -85,8 +85,9 @@ let g:EasyMotion_smartcase = 1
 "END EasyMotion
 
 "BEGIN NERD Commenter
-map <C-c> <Plug>NERDCommenterComment
+"map <C-c> <Plug>NERDCommenterComment
 map <C-x> <Plug>NERDCommenterUncomment
+map <C-c> <Plug>NERDCommenterToggle
 let g:NERDDefaultAlign = 'left'
 let g:NERDCommentEmptyLines = -2
 "END NERD Commenter
