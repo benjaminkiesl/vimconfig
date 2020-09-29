@@ -4,6 +4,7 @@ set exrc "allows local .vimrc in directory
 if has("gui_running")
   set lines=80 columns=102
 endif
+set visualbell
 set statusline=[%n]\ %t
 set guifont=Monospace\ 11
 set clipboard=unnamedplus
@@ -73,9 +74,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'easymotion/vim-easymotion'
 Plug 'scrooloose/nerdcommenter'
 Plug 'kien/ctrlp.vim'
-Plug 'Valloric/YouCompleteMe' "Install manually
 Plug 'vim-syntastic/syntastic'
-Plug 'lervag/vimtex'
 
 call plug#end()
 
@@ -99,21 +98,6 @@ let g:ctrlp_custom_ignore = {
     \ }
 "END ctrlp
 
-"BEGIN YouCompleteMe
-if !exists('g:ycm_semantic_triggers')
-	let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-let g:ycm_auto_trigger = 0
-set completeopt-=preview
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_show_diagnostics_ui = 0
-nnoremap <Leader>g :YcmCompleter GoTo<CR>
-nnoremap <Leader>f :YcmCompleter GoToDefinition<CR>
-nnoremap <Leader>c :YcmCompleter GoToDeclaration<CR>
-"END YouCompleteMe
-
 "BEGIN Syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -129,14 +113,3 @@ let g:syntastic_cpp_checkers = ['gcc']
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_aggregate_erros = 1
 "END Syntastic
-
-"BEGIN vimtex
-let g:vimtex_view_method = 'general'
-let g:vimtex_view_general_viewer = 'okular'
-let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
-let g:vimtex_view_general_options_latexmk = '--unique'
-let g:vimtex_view_forward_search_on_start = 0
-let g:vimtex_quickfix_autojump = 0
-let g:vimtex_quickfix_open_on_warning = 0
-let g:bgrtex_quickfix_autojump = 1
-"END vimtex
