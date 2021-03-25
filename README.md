@@ -2,7 +2,7 @@
 
 ## Getting Started
 
-All the files in this repository are supposed to end up in your home directory `~`. 
+All the files in this repository (except for `README.md`, `.git`, and `.gitignore`, of course) are supposed to end up in your home directory `~`. 
 
 The file `.vimrc` just contains a single line that makes sure that the file `~/.vim/vimrc` will be your "actual" `vimrc`.
 
