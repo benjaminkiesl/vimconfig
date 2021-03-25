@@ -6,7 +6,6 @@ if has("gui_running")
 endif
 set visualbell
 set statusline=[%n]\ %t
-set guifont=Monospace\ 11
 set clipboard=unnamedplus
 set scrolloff=3
 set showcmd

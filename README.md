@@ -2,16 +2,9 @@
 
 ## Getting Started
 
-All the files in this repository are supposed to end up in the 
-directory `~/.vim/`. 
+All the files in this repository are supposed to end up in your home directory `~`. 
 
-The file `~/.vimrc` should only contain the following line:
-
-```
-runtime vimrc 
-```
-
-After this, the file `~/.vim/vimrc` will then be the actual `vimrc`.
+The file `.vimrc` just contains a single line that makes sure that the file `~/.vim/vimrc` will be your "actual" `vimrc`.
 
 ## Configuring SyncTex 
 

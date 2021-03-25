@@ -1,0 +1,44 @@
+"BEGIN basics
+set clipboard=unnamed
+set clipboard+=ideaput
+set scrolloff=3
+set showcmd
+set whichwrap+=h,l
+set tabstop=4
+set shiftwidth=4
+set backspace=indent,eol,start
+"END basics
+
+"BEGIN line numbers
+set number relativenumber
+autocmd BufEnter,FocusGained,InsertLeave,WinEnter,CmdwinEnter * if &nu | set rnu   | endif
+autocmd BufLeave,FocusLost,InsertEnter,WinLeave,CmdwinLeave   * if &nu | set nornu | endif
+"END line numbers
+
+"BEGIN word wrapping
+set wrap
+set linebreak
+set nolist 
+set textwidth=80
+set wrapmargin=0
+set formatoptions-=t
+nmap gqq :action com.andrewbrookins.idea.wrap.WrapAction<CR>
+vmap gq :action com.andrewbrookins.idea.wrap.WrapAction<CR>
+"END word wrapping
+
+"BEGIN search settings
+set incsearch
+set ignorecase
+set smartcase
+"END search settings
+
+"BEGIN disable alarm bell
+set visualbell
+set noerrorbells
+"END disable alarm bell
+
+"BEGIN NERDTree
+set NERDTree
+map <C-n> :NERDTree<CR>
+map <C-t> :NERDTreeToggle<CR>
+"END NERDTree
