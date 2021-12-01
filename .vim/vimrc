@@ -4,8 +4,8 @@ set exrc "allows local .vimrc in directory
 if has("gui_running")
   set lines=80 columns=102
 endif
-set visualbell
 set statusline=[%n]\ %t
+set guifont=Monospace\ 11
 set clipboard=unnamedplus
 set scrolloff=3
 set showcmd
@@ -71,9 +71,9 @@ let &path.="/usr/include/c++/5,/usr/include/x86_64-linux-gnu/c++/5,/usr/include/
 call plug#begin('~/.vim/plugged')
 
 Plug 'easymotion/vim-easymotion'
-Plug 'scrooloose/nerdcommenter'
 Plug 'kien/ctrlp.vim'
-Plug 'vim-syntastic/syntastic'
+Plug 'lervag/vimtex'
+Plug 'scrooloose/nerdcommenter'
 
 call plug#end()
 
@@ -82,9 +82,7 @@ map <Space> <Plug>(easymotion-s)
 let g:EasyMotion_smartcase = 1
 "END EasyMotion
 
-"BEGIN NERD Commenter
-"map <C-c> <Plug>NERDCommenterComment
-map <C-x> <Plug>NERDCommenterUncomment
+"BEGIN NERD Commenter (It seems NERDCommenterToggle cannot be set to 'Ctrl + /', which would normally be done via <C-_>, but gVim recognizes 'Ctrl + /' as just '/'.)
 map <C-c> <Plug>NERDCommenterToggle
 let g:NERDDefaultAlign = 'left'
 let g:NERDCommentEmptyLines = -2
@@ -93,22 +91,17 @@ let g:NERDCommentEmptyLines = -2
 "BEGIN ctrlp
 let g:ctrlp_custom_ignore = {
     \ 'dir': '\.git$\|build',
-    \ 'file': '\v(\.cpp|\.cc|\.c|\.h|\.hpp|\.hh|\.cxx|\.tex|\.bib|\.txt|\.spthy|\.m4|\.m4i|\.rc|\.gpp|\.sh|\.xml|\.html|\.py|\.json|\.hs|\.md|Makefile)@<!$'
+    \ 'file': '\v(\.cpp|\.cc|\.c|\.h|\.hpp|\.hh|\.cxx|\.tex|\.bib|\.txt|\.spthy|\.m4|\.m4i|\.rc|\.gpp|\.sh|\.xml|\.html|\.py|\.json|\.hs|\.md|\.m|\.cnf|Makefile)@<!$'
     \ }
 "END ctrlp
 
-"BEGIN Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_tex_checkers = []
-let g:syntastic_cpp_include_dirs = [ '../include', 'include' ]
-let g:syntastic_c_include_dirs = [ '../include', 'include' ]
-let g:syntastic_cpp_checkers = ['gcc']
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_aggregate_erros = 1
-"END Syntastic
+"BEGIN vimtex
+let g:vimtex_view_method = 'general'
+let g:vimtex_view_general_viewer = 'okular'
+let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+let g:vimtex_view_general_options_latexmk = '--unique'
+let g:vimtex_view_forward_search_on_start = 0
+let g:vimtex_quickfix_autojump = 0
+let g:vimtex_quickfix_open_on_warning = 0
+let g:bgrtex_quickfix_autojump = 1
+"END vimtex
