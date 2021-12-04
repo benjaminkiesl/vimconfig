@@ -6,9 +6,19 @@ All the files in this repository (except for `README.md`, `.git`, and `.gitignor
 
 The file `.vimrc` just contains a single line that makes sure that the file `~/.vim/vimrc` will be your "actual" `vimrc`.
 
+## Setting up VIM Mode for the bash
+
+To set up vim mode for the bash, put the following line into `~/.bashrc`:
+
+```
+set -o vi
+```
+
+The file `.inputrc` from this repository configures the bash so that the cursor changes depending on whether you are in insert mode or edit mode.
+
 ## Configuring SyncTex 
 
-To make SyncTex work, add the following line to the file `~/.bashrc`:
+To make SyncTex work, add the following line to `~/.bashrc`:
 
 ```
 alias vim='vim --servername VIM'

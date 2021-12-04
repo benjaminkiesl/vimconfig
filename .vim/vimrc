@@ -60,10 +60,6 @@ augroup myvimrc
 augroup END
 "END automatically open quickfix window after grep
 
-"BEGIN astyle
-map <C-a> :%!~/.vim/astyle-google --style=linux --indent=spaces=2<Enter>
-"END astyle
-
 "BEGIN path
 let &path.="/usr/include/c++/5,/usr/include/x86_64-linux-gnu/c++/5,/usr/include/c++/5/backward,/usr/lib/gcc/x86_64-linux-gnu/5/include,/usr/local/include,/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed,/usr/include/x86_64-linux-gnu,/usr/include,"
 "END path
