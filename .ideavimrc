@@ -42,3 +42,4 @@ set NERDTree
 map <C-n> :NERDTree<CR>
 map <C-t> :NERDTreeToggle<CR>
 "END NERDTree
+
