@@ -1,12 +1,22 @@
+"BEGIN plugins
+call plug#begin('~/.vim/plugged')
+
+Plug 'easymotion/vim-easymotion'
+Plug 'kien/ctrlp.vim'
+Plug 'lervag/vimtex'
+Plug 'scrooloose/nerdcommenter'
+Plug 'chiendo97/intellij.vim'
+
+call plug#end()
+"END plugins
+
 "BEGIN basics
-colorscheme onehalflight-benjamin
 set exrc "allows local .vimrc in directory
 if has("gui_running")
   set lines=80 columns=102
 endif
 set statusline=[%n]\ %t
-set guifont=Monospace\ 11
-set clipboard=unnamedplus
+set clipboard=unnamed
 set scrolloff=3
 set showcmd
 set whichwrap+=<,>,h,l,[,]
@@ -50,6 +60,7 @@ nnoremap <C-k> :bnext<CR>;
 nnoremap <C-j> :bprevious<CR>;
 nnoremap <C-l> :ls<CR>
 nnoremap <C-h> :buffer<Space>
+nnoremap <C-w> :bd<CR>
 "END move efficiently between buffers
 
 "BEGIN automatically open quickfix window after grep
@@ -64,14 +75,10 @@ augroup END
 let &path.="/usr/include/c++/5,/usr/include/x86_64-linux-gnu/c++/5,/usr/include/c++/5/backward,/usr/lib/gcc/x86_64-linux-gnu/5/include,/usr/local/include,/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed,/usr/include/x86_64-linux-gnu,/usr/include,"
 "END path
 
-call plug#begin('~/.vim/plugged')
-
-Plug 'easymotion/vim-easymotion'
-Plug 'kien/ctrlp.vim'
-Plug 'lervag/vimtex'
-Plug 'scrooloose/nerdcommenter'
-
-call plug#end()
+"BEGIN color scheme
+set background=light
+colorscheme intellij
+"END color scheme
 
 "BEGIN EasyMotion
 map <Space> <Plug>(easymotion-s)
@@ -92,10 +99,10 @@ let g:ctrlp_custom_ignore = {
 "END ctrlp
 
 "BEGIN vimtex
-let g:vimtex_view_method = 'general'
-let g:vimtex_view_general_viewer = 'okular'
-let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
-let g:vimtex_view_general_options_latexmk = '--unique'
+"let g:vimtex_view_method = 'general'
+"let g:vimtex_view_general_viewer = 'okular'
+"let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+"let g:vimtex_view_general_options_latexmk = '--unique'
 let g:vimtex_view_forward_search_on_start = 0
 let g:vimtex_quickfix_autojump = 0
 let g:vimtex_quickfix_open_on_warning = 0

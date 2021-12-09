@@ -1,2 +1,2 @@
-set guifont=Monospace\ 12
+set guifont=Monaco:h14
 
