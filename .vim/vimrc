@@ -1,11 +1,12 @@
 "BEGIN plugins
 call plug#begin('~/.vim/plugged')
 
-Plug 'easymotion/vim-easymotion'
 Plug 'kien/ctrlp.vim'
 Plug 'lervag/vimtex'
 Plug 'scrooloose/nerdcommenter'
 Plug 'chiendo97/intellij.vim'
+Plug 'bohlender/vim-smt2'
+Plug 'tamarin-prover/editors'
 
 call plug#end()
 "END plugins
@@ -60,7 +61,7 @@ nnoremap <C-k> :bnext<CR>;
 nnoremap <C-j> :bprevious<CR>;
 nnoremap <C-l> :ls<CR>
 nnoremap <C-h> :buffer<Space>
-nnoremap <C-w> :bd<CR>
+"nnoremap <C-w> :bd<CR>
 "END move efficiently between buffers
 
 "BEGIN automatically open quickfix window after grep
@@ -86,7 +87,10 @@ let g:EasyMotion_smartcase = 1
 "END EasyMotion
 
 "BEGIN NERD Commenter (It seems NERDCommenterToggle cannot be set to 'Ctrl + /', which would normally be done via <C-_>, but gVim recognizes 'Ctrl + /' as just '/'.)
-map <C-c> <Plug>NERDCommenterToggle
+"Toggle comments with Ctrl+c:
+"map <C-c> <Plug>NERDCommenterToggle  
+"Toggle comments with Cmd+/ (on Mac):
+map <D-/> <Plug>NERDCommenterToggle  
 let g:NERDDefaultAlign = 'left'
 let g:NERDCommentEmptyLines = -2
 "END NERD Commenter
@@ -94,17 +98,22 @@ let g:NERDCommentEmptyLines = -2
 "BEGIN ctrlp
 let g:ctrlp_custom_ignore = {
     \ 'dir': '\.git$\|build',
-    \ 'file': '\v(\.cpp|\.cc|\.c|\.h|\.hpp|\.hh|\.cxx|\.tex|\.bib|\.txt|\.spthy|\.m4|\.m4i|\.rc|\.gpp|\.sh|\.xml|\.html|\.py|\.json|\.hs|\.md|\.m|\.cnf|Makefile)@<!$'
+    \ 'file': '\v(\.cpp|\.cc|\.c|\.h|\.hpp|\.hh|\.cxx|\.rs|\.tex|\.bib|\.txt|\.spthy|\.m4|\.m4i|\.rc|\.gpp|\.sh|\.xml|\.html|\.py|\.json|\.hs|\.md|\.m|\.cnf|.\drat|Makefile)@<!$'
     \ }
+if filereadable(".ctrlpignore")
+	let g:ctrlp_user_command = 'find %s -type f | grep -v "`cat .ctrlpignore`"'
+endif
 "END ctrlp
 
 "BEGIN vimtex
-"let g:vimtex_view_method = 'general'
-"let g:vimtex_view_general_viewer = 'okular'
-"let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
-"let g:vimtex_view_general_options_latexmk = '--unique'
+let g:vimtex_view_method = 'skim'
 let g:vimtex_view_forward_search_on_start = 0
 let g:vimtex_quickfix_autojump = 0
 let g:vimtex_quickfix_open_on_warning = 0
 let g:bgrtex_quickfix_autojump = 1
 "END vimtex
+
+"BEGIN vim-smt2
+let g:smt2_formatter_indent_str = " "
+let g:smt2_solver_command="z3"
+"END vim-smt2
